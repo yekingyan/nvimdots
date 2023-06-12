@@ -110,31 +110,57 @@ return function()
 		},
 		-- You can set mappings if you want
 		mapping = cmp.mapping.preset.insert({
-			["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+			-- ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
 			["<C-p>"] = cmp.mapping.select_prev_item(),
 			["<C-n>"] = cmp.mapping.select_next_item(),
 			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
 			["<C-w>"] = cmp.mapping.close(),
+			-- ["<Tab>"] = cmp.mapping(function(fallback)
+			-- 	if cmp.visible() then
+			-- 		cmp.select_next_item()
+			--         cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+			-- 	elseif require("luasnip").expand_or_locally_jumpable() then
+			-- 		vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"))
+			-- 	else
+			-- 		fallback()
+			-- 	end
+			-- end, { "i", "s" }),
+			-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+			-- 	if cmp.visible() then
+			-- 		cmp.select_prev_item()
+			-- 	elseif require("luasnip").jumpable(-1) then
+			-- 		vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+			-- 	else
+			-- 		fallback()
+			-- 	end
+			-- end, { "i", "s" }),
 			["<Tab>"] = cmp.mapping(function(fallback)
+				-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
 				if cmp.visible() then
-					cmp.select_next_item()
-				elseif require("luasnip").expand_or_locally_jumpable() then
-					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"))
+					local entry = cmp.get_selected_entry()
+					if not entry then
+						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					else
+						cmp.confirm()
+					end
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
-			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif require("luasnip").jumpable(-1) then
-					vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
+			end, { "i", "s", "c" }),
+			["<CR>"] = cmp.mapping({
+				i = function(fallback)
+					if cmp.visible() and cmp.get_active_entry() then
+						cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+					else
+						fallback()
+					end
+				end,
+				s = cmp.mapping.confirm({ select = true }),
+				c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+			}),
 		}),
+
 		snippet = {
 			expand = function(args)
 				require("luasnip").lsp_expand(args.body)
