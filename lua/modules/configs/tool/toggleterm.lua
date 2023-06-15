@@ -35,6 +35,7 @@ return function()
 		persist_size = true,
 		direction = "horizontal",
 		close_on_exit = true, -- close the terminal window when the process exits
-		shell = vim.o.shell, -- change the default shell
+		-- shell = vim.o.shell, -- change the default shell
+		shell = "C:/'Program Files'/Git/bin/bash.exe",
 	})
 end
