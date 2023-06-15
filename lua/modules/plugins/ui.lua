@@ -75,5 +75,10 @@ ui["edluffy/specs.nvim"] = {
 	event = "CursorMoved",
 	config = require("ui.specs"),
 }
+ui["folke/tokyonight.nvim"] = {
+	lazy = true,
+	priority = 1000,
+	config = require("ui.tokyonight"),
+}
 
 return ui

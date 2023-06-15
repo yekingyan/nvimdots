@@ -64,6 +64,15 @@ local plug_map = {
 		:with_noremap()
 		:with_desc("edit: Toggle comment for block with selection"),
 
+	["n|<C-/>"] = map_cmd("<Plug>(comment_toggle_linewise)")
+		:with_silent()
+		:with_noremap()
+		:with_desc("edit: Toggle comment for line with operator"),
+	["x|<C-/>"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
+		:with_silent()
+		:with_noremap()
+		:with_desc("edit: Toggle comment for line with selection"),
+
 	-- Plugin: diffview
 	["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap():with_desc("git: Show diff"),
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap():with_desc("git: Close diff"),

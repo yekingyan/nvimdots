@@ -21,6 +21,7 @@ return function()
 			-- path_display = { "smart" },
 			path_display = { "truncate" },
 			wrap_results = true,
+			shorten_path = true,
 			selection_strategy = "reset",
 			sorting_strategy = "ascending",
 			color_devicons = true,
