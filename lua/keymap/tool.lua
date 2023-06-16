@@ -7,8 +7,9 @@ require("keymap.helpers")
 
 local plug_map = {
 	-- Plugin: vim-fugitive
-	["n|gps"] = map_cr("G push"):with_noremap():with_silent():with_desc("git: Push"),
-	["n|gpl"] = map_cr("G pull"):with_noremap():with_silent():with_desc("git: Pull"),
+	["n|gp"] = map_cr("G push"):with_noremap():with_desc("git: Push"),
+	["n|gl"] = map_cr("G pull"):with_noremap():with_desc("git: Pull"),
+	["n|glb"] = map_cr("G pull"):with_noremap():with_desc("git: Pull --rebase"),
 	["n|<leader>G"] = map_cu("Git"):with_noremap():with_silent():with_desc("git: Open git-fugitive"),
 
 	-- Plugin: nvim-tree
