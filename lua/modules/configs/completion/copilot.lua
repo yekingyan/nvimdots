@@ -16,7 +16,9 @@ return function()
 			filetypes = {
 				["dap-repl"] = false,
 				["big_file_disabled_ft"] = false,
+				markdown = true,
 			},
 		})
 	end, 100)
+	vim.g.copilot_filetypes = { markdown = true }
 end

@@ -13,6 +13,7 @@ return function()
 			['"'] = { escape = true, close = true, pair = '""' },
 			["'"] = { escape = true, close = true, pair = "''" },
 			["`"] = { escape = true, close = true, pair = "``" },
+			["```"] = { escape = true, close = true, pair = "``````" },
 		},
 		options = {
 			disabled_filetypes = { "big_file_disabled_ft" },

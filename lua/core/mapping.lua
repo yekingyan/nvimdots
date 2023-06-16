@@ -27,7 +27,7 @@ local core_map = {
 	["n|<A-'>"] = map_cr("resize +2"):with_silent():with_desc("window: Resize +2 horizontally"),
 	["n|<C-q>"] = map_cr("wq"):with_desc("edit: Save file and quit"),
 	["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
-	["n|<Esc>"] = map_cmd(":w<CR>"):with_silent():with_desc("edit: Save file"),
+	["n|<Esc><Esc>"] = map_cmd(":w<CR>"):with_silent():with_desc("edit: Save file"),
 	["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("edit: Toggle spell check"),
 	["n|tn"] = map_cr("tabnew"):with_noremap():with_silent():with_desc("tab: Create a new tab"),
 	["n|tk"] = map_cr("tabnext"):with_noremap():with_silent():with_desc("tab: Move to next tab"),
