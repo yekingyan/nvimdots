@@ -29,7 +29,15 @@ function mapping.lsp(buf)
 		["nv|ga"] = map_cr("Lspsaga code_action"):with_buffer(buf):with_desc("lsp: Code action for cursor"),
 		["n|gD"] = map_cr("Lspsaga peek_definition"):with_buffer(buf):with_desc("lsp: Preview definition"),
 		["n|gd"] = map_cr("Lspsaga goto_definition"):with_buffer(buf):with_desc("lsp: Goto definition"),
-		["n|gh"] = map_cr("Lspsaga lsp_finder"):with_buffer(buf):with_desc("lsp: Show reference"),
+		-- ["n|gf"] = map_cr("Lspsaga lsp_finder"):with_buffer(buf):with_desc("lsp: Show reference"),
+		["n|gf"] = map_callback(function()
+			if require("obsidian").util.cursor_on_markdown_link() then
+				-- vim.cmd("ObsidianFollowLink")
+				vim.cmd(("ObsidianSearch %s"):format(vim.fn.expand("<cWORD>")))
+			else
+				vim.cmd("Lspsaga lsp_finder")
+			end
+		end):with_desc("show reference"),
 		["n|<leader>ci"] = map_cr("Lspsaga incoming_calls"):with_buffer(buf):with_desc("lsp: Show incoming calls"),
 		["n|<leader>co"] = map_cr("Lspsaga outgoing_calls"):with_buffer(buf):with_desc("lsp: Show outgoing calls"),
 	}

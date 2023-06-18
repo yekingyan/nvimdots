@@ -76,7 +76,8 @@ ui["edluffy/specs.nvim"] = {
 	config = require("ui.specs"),
 }
 ui["folke/tokyonight.nvim"] = {
-	lazy = true,
+	lazy = false,
+	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	priority = 1000,
 	config = require("ui.tokyonight"),
 }

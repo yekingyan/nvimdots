@@ -23,6 +23,22 @@ lang["iamcco/markdown-preview.nvim"] = {
 	ft = "markdown",
 	build = ":call mkdp#util#install()",
 }
+lang["epwalsh/obsidian.nvim"] = {
+	lazy = true,
+	ft = "markdown",
+	config = require("lang.obsidian"),
+	dependencies = {
+		-- Required.
+		"nvim-lua/plenary.nvim",
+		-- Optional, for completion.
+		"hrsh7th/nvim-cmp",
+		-- Optional, for search and quick-switch functionality.
+		"nvim-telescope/telescope.nvim",
+		-- Optional, alternative to nvim-treesitter for syntax highlighting.
+		"godlygeek/tabular",
+		"preservim/vim-markdown",
+	},
+}
 lang["chrisbra/csv.vim"] = {
 	lazy = true,
 	ft = "csv",
