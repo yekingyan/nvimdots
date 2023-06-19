@@ -41,6 +41,7 @@ local core_map = {
 	["i|<C-s>"] = map_cmd("<Esc>:w<CR>"):with_desc("edit: Save file"),
 	["i|<C-q>"] = map_cmd("<Esc>:wq<CR>"):with_desc("edit: Save file and quit"),
 	["i|<Esc><Esc>"] = map_cmd("<Esc>:w<CR>"):with_silent():with_desc("edit: Save file"),
+	["i|<C-v>"] = map_cmd("<Esc>pa"):with_desc("edit: Paste"),
 	-- Command mode
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Left"),
 	["c|<C-f>"] = map_cmd("<Right>"):with_noremap():with_desc("edit: Right"),
@@ -51,11 +52,13 @@ local core_map = {
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]])
 		:with_noremap()
 		:with_desc("edit: Complete path of current file"),
+	["c|<C-v>"] = map_cmd("<C-R>+"):with_noremap():with_desc("edit: Paste"),
 	-- Visual mode
 	["v|J"] = map_cmd(":m '>+1<CR>gv=gv"):with_desc("edit: Move this line down"),
 	["v|K"] = map_cmd(":m '<-2<CR>gv=gv"):with_desc("edit: Move this line up"),
 	["v|<"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
 	["v|>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
+	["v|<C-c>"] = map_cmd('"+y'):with_desc("edit: Copy to clipboard"),
 }
 
 bind.nvim_load_mapping(core_map)

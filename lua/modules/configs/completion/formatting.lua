@@ -40,6 +40,10 @@ function M.enable_format_on_save(is_configured)
 		group = "format_on_save",
 		pattern = opts.pattern,
 		callback = function()
+			-- don't format markdown files
+			if vim.bo.filetype == "markdown" then
+				return
+			end
 			require("completion.formatting").format({
 				timeout_ms = opts.timeout,
 				filter = M.format_filter,
