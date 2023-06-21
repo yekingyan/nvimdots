@@ -27,7 +27,6 @@ local core_map = {
 	["n|<A-'>"] = map_cr("resize +2"):with_silent():with_desc("window: Resize +2 horizontally"),
 	["n|<C-q>"] = map_cr("wq"):with_desc("edit: Save file and quit"),
 	["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
-	["n|<Esc><Esc>"] = map_cmd(":w<CR>"):with_silent():with_desc("edit: Save file"),
 	["n|<leader>sf"] = map_cr("tabonly"):with_noremap():with_silent():with_desc("tab: Only keep current tab"),
 	["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("edit: Toggle spell check"),
 	["n|tn"] = map_cr("tabnew"):with_noremap():with_silent():with_desc("tab: Create a new tab"),
@@ -40,8 +39,9 @@ local core_map = {
 	["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap():with_desc("edit: Move cursor to line start"),
 	["i|<C-s>"] = map_cmd("<Esc>:w<CR>"):with_desc("edit: Save file"),
 	["i|<C-q>"] = map_cmd("<Esc>:wq<CR>"):with_desc("edit: Save file and quit"),
-	["i|<Esc><Esc>"] = map_cmd("<Esc>:w<CR>"):with_silent():with_desc("edit: Save file"),
-	["i|<C-v>"] = map_cmd("<Esc>pa"):with_desc("edit: Paste"),
+	["in|<Esc><Esc>"] = map_cmd("<Esc>:w<CR>"):with_silent():with_desc("edit: Save file"),
+	["ic|<C-v>"] = map_cmd("<Esc>pa"):with_desc("edit: Paste"),
+	["in|<C-z>"] = map_cmd("<Esc>u"):with_desc("edit: Undo"),
 	-- Command mode
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Left"),
 	["c|<C-f>"] = map_cmd("<Right>"):with_noremap():with_desc("edit: Right"),
@@ -52,7 +52,6 @@ local core_map = {
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]])
 		:with_noremap()
 		:with_desc("edit: Complete path of current file"),
-	["c|<C-v>"] = map_cmd("<C-R>+"):with_noremap():with_desc("edit: Paste"),
 	-- Visual mode
 	["v|J"] = map_cmd(":m '>+1<CR>gv=gv"):with_desc("edit: Move this line down"),
 	["v|K"] = map_cmd(":m '<-2<CR>gv=gv"):with_desc("edit: Move this line up"),

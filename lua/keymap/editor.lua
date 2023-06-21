@@ -88,7 +88,10 @@ local plug_map = {
 	["nv|<leader>cc"] = map_cmd("<Cmd>HopChar2<CR>"):with_noremap():with_desc("jump: Goto two chars"),
 
 	-- Plugin: treehopper
-	["o|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
+	["n|tt"] = map_cu("lua require('tsht').nodes()")
+		:with_noremap()
+		:with_silent()
+		:with_desc("jump: Operate across syntax tree"),
 
 	-- Plugin: tabout
 	["i|<A-l>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
