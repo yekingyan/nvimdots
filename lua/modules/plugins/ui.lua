@@ -47,10 +47,10 @@ ui["zbirenbaum/neodim"] = {
 -- 	event = "BufReadPost",
 -- 	config = require("ui.neoscroll"),
 -- }
-ui["shaunsingh/nord.nvim"] = {
-	lazy = true,
-	config = require("ui.nord"),
-}
+-- ui["shaunsingh/nord.nvim"] = {
+-- 	lazy = true,
+-- 	config = require("ui.nord"),
+-- }
 ui["rcarriga/nvim-notify"] = {
 	lazy = true,
 	event = "VeryLazy",
