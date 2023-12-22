@@ -2,7 +2,7 @@ return function()
 	local transparent_background = require("core.settings").transparent_background
 	local clear = {}
 
-	require("catppuccin").setup({
+	require("modules.utils").load_plugin("catppuccin", {
 		flavour = "mocha", -- Can be one of: latte, frappe, macchiato, mocha
 		background = { light = "latte", dark = "mocha" },
 		dim_inactive = {
@@ -47,7 +47,7 @@ return function()
 					information = { "underline" },
 				},
 			},
-			aerial = false,
+			aerial = true,
 			alpha = false,
 			barbar = false,
 			beacon = false,
@@ -55,11 +55,14 @@ return function()
 			coc_nvim = false,
 			dap = { enabled = true, enable_ui = true },
 			dashboard = false,
+			dropbar = { enabled = true, color_mode = true },
 			fern = false,
 			fidget = true,
+			flash = true,
 			gitgutter = false,
 			gitsigns = true,
 			harpoon = false,
+			headlines = false,
 			hop = true,
 			illuminate = true,
 			indent_blankline = { enabled = true, colored_indent_levels = false },
@@ -79,12 +82,14 @@ return function()
 			nvimtree = true,
 			overseer = false,
 			pounce = false,
+			rainbow_delimiters = true,
+			sandwich = false,
 			semantic_tokens = true,
 			symbols_outline = false,
 			telekasten = false,
-			telescope = true,
+			telescope = { enabled = true, style = "nvchad" },
 			treesitter_context = true,
-			ts_rainbow = true,
+			ts_rainbow = false,
 			vim_sneak = false,
 			vimwiki = false,
 			which_key = true,
@@ -113,8 +118,8 @@ return function()
 					MasonNormal = { link = "NormalFloat" },
 
 					-- For indent-blankline
-					IndentBlanklineChar = { fg = cp.surface0 },
-					IndentBlanklineContextChar = { fg = cp.surface2, style = { "bold" } },
+					IblIndent = { fg = cp.surface0 },
+					IblScope = { fg = cp.surface2, style = { "bold" } },
 
 					-- For nvim-cmp and wilder.nvim
 					Pmenu = { fg = cp.overlay2, bg = transparent_background and cp.none or cp.base },
@@ -134,53 +139,38 @@ return function()
 
 					-- For nvim-tree
 					NvimTreeRootFolder = { fg = cp.pink },
-					NvimTreeIndentMarker = { fg = cp.surface0 },
+					NvimTreeIndentMarker = { fg = cp.surface2 },
 
 					-- For trouble.nvim
 					TroubleNormal = { bg = transparent_background and cp.none or cp.base },
 
 					-- For telescope.nvim
-					TelescopeBorder = {
-						fg = transparent_background and cp.blue or cp.mantle,
-						bg = transparent_background and cp.none or cp.mantle,
-					},
-					TelescopePromptBorder = {
-						fg = transparent_background and cp.blue or cp.surface0,
-						bg = transparent_background and cp.none or cp.surface0,
-					},
-					TelescopePromptNormal = {
-						fg = cp.text,
-						bg = transparent_background and cp.none or cp.surface0,
-					},
-					TelescopePromptPrefix = {
-						fg = cp.flamingo,
-						bg = transparent_background and cp.none or cp.surface0,
-					},
-					TelescopeNormal = {
-						bg = transparent_background and cp.none or cp.mantle,
-					},
-					TelescopePreviewTitle = {
-						fg = transparent_background and cp.green or cp.base,
-						bg = transparent_background and cp.none or cp.green,
-					},
-					TelescopePromptTitle = {
-						fg = transparent_background and cp.red or cp.base,
-						bg = transparent_background and cp.none or cp.red,
-					},
-					TelescopeResultsTitle = {
-						fg = cp.mantle,
-						bg = transparent_background and cp.none or cp.mantle,
-					},
-					TelescopeSelection = {
-						fg = cp.green,
-						bg = transparent_background and cp.none or cp.surface0,
-					},
+					TelescopeMatching = { fg = cp.lavender },
 					TelescopeResultsDiffAdd = { fg = cp.green },
 					TelescopeResultsDiffChange = { fg = cp.yellow },
 					TelescopeResultsDiffDelete = { fg = cp.red },
 
+					-- For glance.nvim
+					GlanceWinBarFilename = { fg = cp.subtext1, style = { "bold" } },
+					GlanceWinBarFilepath = { fg = cp.subtext0, style = { "italic" } },
+					GlanceWinBarTitle = { fg = cp.teal, style = { "bold" } },
+					GlanceListCount = { fg = cp.lavender },
+					GlanceListFilepath = { link = "Comment" },
+					GlanceListFilename = { fg = cp.blue },
+					GlanceListMatch = { fg = cp.lavender, style = { "bold" } },
+					GlanceFoldIcon = { fg = cp.green },
+
+					-- For nvim-treehopper
+					TSNodeKey = {
+						fg = cp.peach,
+						bg = transparent_background and cp.none or cp.base,
+						style = { "bold", "underline" },
+					},
+
 					-- For treesitter
 					["@keyword.return"] = { fg = cp.pink, style = clear },
+					["@error.c"] = { fg = cp.none, style = clear },
+					["@error.cpp"] = { fg = cp.none, style = clear },
 				}
 			end,
 		},
